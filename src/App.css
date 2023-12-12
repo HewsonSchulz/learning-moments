@@ -1,0 +1,10 @@
+/* ! */
+#post-list {
+    margin-left: 20px;
+}
+
+/* ! */
+#post-list>* {
+    margin-top: 20px;
+    list-style: none;
+}

@@ -5,7 +5,7 @@ import './Login.css'
 import { getUserByEmail } from '../../services/userService'
 
 export const Login = () => {
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState('hewsonschulz@bruh.com')
   const navigate = useNavigate()
 
   const handleLogin = async (e) => {
@@ -48,7 +48,7 @@ export const Login = () => {
           </fieldset>
           <fieldset className='auth-fieldset'>
             <div>
-              <button type='submit'>Sign in</button>
+              <button className='auth-btn' type='submit'>Sign in</button>
             </div>
           </fieldset>
         </form>

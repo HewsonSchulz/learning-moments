@@ -1,14 +1,14 @@
-export const generateOptions = (method, body) => {
-    if (body !== undefined) {
-        return {
-            method,
-            headers: { 'Content-Type': 'application/json', },
-            body: JSON.stringify(body),
-        }
+export const fetchOptions = (method, body) => {
+    const options = {
+        method,
+        headers: {
+            'Content-Type': 'application/json',
+        },
     }
 
-    return {
-        method,
-        headers: { 'Content-Type': 'application/json', }
+    if (body) {
+        options.body = JSON.stringify(body)
     }
+
+    return options
 }

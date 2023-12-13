@@ -39,7 +39,7 @@
   border-radius: 3px;
 }
 
-button {
+.auth-btn {
   width: 100%;
   padding: 10px;
   color: var(--white);
@@ -49,7 +49,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.auth-btn:hover {
   background-color: var(--secondary);
 }
 

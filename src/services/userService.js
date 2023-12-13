@@ -1,4 +1,4 @@
-import { generateOptions } from '../utils'
+import { fetchOptions } from '../utils'
 
 export const getUsers = async () => {
   return await fetch('http://localhost:8088/users')
@@ -11,7 +11,7 @@ export const getUserByEmail = async (email) => {
 }
 
 export const createUser = async (user) => {
-  return await fetch('http://localhost:8088/users', generateOptions('POST', user))
+  return await fetch('http://localhost:8088/users', fetchOptions('POST', user))
     .then((res) => res.json())
 }
 

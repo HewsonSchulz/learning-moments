@@ -8,3 +8,23 @@
     margin-top: 20px;
     list-style: none;
 }
+
+/* ! */
+.like-btn {
+    background-color: var(--primary);
+}
+
+/* ! */
+.like-btn:hover {
+    background-color: var(--secondary);
+}
+
+/* ! */
+.unlike-btn {
+    background-color: var(--third);
+}
+
+/* ! */
+.unlike-btn:hover {
+    background-color: var(--fourth);
+}

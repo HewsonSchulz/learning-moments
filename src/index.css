@@ -12,6 +12,8 @@ font-family: "Roboto", sans-serif;
 :root {
   --primary: #4cb44a;
   --secondary: #3b8d39;
+  --third: #2b7bd6;
+  --fourth: #2262ac;
   --info: #ffb400;
   --warning: #f6511d;
   --white: #ffffff;

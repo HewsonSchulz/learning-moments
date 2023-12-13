@@ -20,34 +20,30 @@ export const PostDetails = ({ loggedInUser }) => {
     const setAndGetLikes = () => {
         // get all likes
         getLikes().then((likes) => {
-
             // set current like
             setLike(getLikeByCFK(loggedInUser.id, post.id, likes))
-
             // set like count
             setLikeCount(getLikeCount(post.id, likes))
 
             for (const like of likes) {
-                // if the current user has liked the current post
+                // check if the current user has liked the current post
                 if (like.userId === loggedInUser.id && like.postId === post.id) {
-                    // set if user has liked current post to true
                     setHasLikedPost(true)
                 }
             }
-
         })
     }
 
 
     useEffect(() => {
-        // get current post object based on its id
+        // get current post object
         getPostById(postId).then((post) => {
             setPost(post)
         })
 
         // if post has been saved
         if (post.userId) {
-            // get user object based on current post's userId
+            // get current user object
             getUserById(post.userId).then((user) => {
                 setUser(user)
             })
@@ -55,7 +51,7 @@ export const PostDetails = ({ loggedInUser }) => {
 
         // if post has been saved
         if (post.topicId) {
-            // get topic object based on current post's topicId
+            // get current topic object
             getTopicById(post.topicId).then((topic) => {
                 setTopic(topic)
             })
@@ -70,34 +66,38 @@ export const PostDetails = ({ loggedInUser }) => {
 
     }, [loggedInUser.id, post.topicId, post.userId, postId, user.id]) // setAndGetLikes dependency causes infinite loop
 
+
     const handleLikeClick = async () => {
         await addLike({ userId: loggedInUser.id, postId: post.id })
         setAndGetLikes()
+        //! navigate to the Favorites view
     }
-
     const handleUnlikeClick = async () => {
         await deleteLike(like)
         setHasLikedPost(false)
         setAndGetLikes()
     }
+    const handleEditClick = async () => {
+        //! navigate to Edit Post view
+    }
 
     const renderLikeButton = () => {
-        // if current user is not the author, and current user is not undefined
+        // if current user is not the author, and current user exists
         if (!isAuthor && user.id) {
-            // and has liked the post
+            // if user has liked the post
             if (hasLikedPost) {
-                // then return unlike button
+                // return unlike button
                 return <button className='unlike-btn' onClick={handleUnlikeClick}>Unlike</button>
             } else {
                 // otherwise, return like button
                 return <button className='like-btn' onClick={handleLikeClick}>Like</button>
             }
         } else {
-            // if current user is the author, return nothing
-            return ''
+            // if current user is the author, return edit button
+            return <button className='edit-btn' onClick={handleEditClick}>Edit</button>
         }
     }
-    // if current user is the author, display nothing
+
 
     return <ul className='post'>
 
@@ -107,6 +107,7 @@ export const PostDetails = ({ loggedInUser }) => {
         <li>{post.timestamp}</li>
         <li>{post.body}</li>
         <li>{likeCount}</li>
+
         {renderLikeButton()}
 
     </ul>

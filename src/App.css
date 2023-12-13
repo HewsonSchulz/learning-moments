@@ -28,3 +28,13 @@
 .unlike-btn:hover {
     background-color: var(--fourth);
 }
+
+/* ! */
+.edit-btn {
+    background-color: var(--info);
+}
+
+/* ! */
+.edit-btn:hover {
+    background-color: var(--info2);
+}

@@ -75,13 +75,13 @@ export const PostsList = () => {
         <PostSearchBar setSearchTerm={setSearchTerm} resetSearch={resetSearchTopic} />
         <PostTopicBar setSearchTopic={setSearchTopicId} resetSearch={resetSearchTerm} topics={allTopics} />
 
-        {filteredPosts.map((post) =>
-            <Post
+        {filteredPosts.map((post) => {
+            return <Post
                 post={post}
                 topics={allTopics}
                 likes={allLikes}
                 key={post.id}
             />
-        )}
+        })}
     </section>
 }

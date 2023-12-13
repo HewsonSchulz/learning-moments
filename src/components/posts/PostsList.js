@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { getLikes } from '../../services/likeService'
 import { getPosts } from '../../services/postService'
-import { getTopics } from '../../services/topicService'
+import { findTopicById, getTopics } from '../../services/topicService'
 import { Post } from './Post'
 import { PostSearchBar } from './PostSearchBar'
 import { PostTopicBar } from './PostTopicBar'
@@ -32,42 +32,35 @@ export const PostsList = () => {
     const resetSearchTopic = () => {
         setSearchTopicId('0')
     }
-    // returns topic with matching id
-    const findTopicById = (topicId) => {
-        for (const topic of allTopics) {
-            if (topicId === topic.id) {
-                return topic
-            }
-        }
-
-        return null
-    }
 
     // initial render
     useEffect(() => {
         resetState()
     }, [])
+
     // filters posts depending on search method
     useEffect(() => {
-        // if there is no search topic, filter by term
+        // if there is no search topic
         if (searchTopicId === '0') {
+            // filter by term
             setFilteredPosts(
                 allPosts.filter(post =>
                     post.title.toLowerCase().includes(searchTerm.toLowerCase())
                 )
             )
         } else {
-            // otherwise, filter by topic
+            // otherwise
             setFilteredPosts(
+                // filter by topic
                 allPosts.filter(post => {
                     if (searchTopicId === '0') {
                         return true;
                     }
-                    return findTopicById(post.topicId).id === parseInt(searchTopicId)
+                    return findTopicById(post.topicId, allTopics).id === parseInt(searchTopicId)
                 })
             )
         }
-    }, [allPosts, searchTerm, searchTopicId])
+    }, [allPosts, allTopics, searchTerm, searchTopicId])
 
 
     return <section id='post-list'>

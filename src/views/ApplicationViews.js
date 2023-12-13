@@ -8,9 +8,10 @@ export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
 
     useEffect(() => {
+        // get logged in user from local storage
         const localLearningUser = localStorage.getItem('learning_user')
         const learningUserObject = JSON.parse(localLearningUser)
-        setCurrentUser(learningUserObject)
+        setCurrentUser(learningUserObject) // { id: n }
     }, [])
 
     return <Routes>
@@ -22,7 +23,6 @@ export const ApplicationViews = () => {
             <Route index element={<PostsList />} />
 
             <Route path='details'>
-                {/* <Route index element={<PostDetails />} /> */}
                 <Route path=':postId' element={<PostDetails loggedInUser={currentUser} />} />
             </Route>
 

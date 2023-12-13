@@ -1,19 +1,9 @@
 import { Link } from 'react-router-dom'
 import { getLikeCount } from '../../services/likeService'
-
-// function for finding a topic based on its id
-const getTopicById = (topicId, topics) => {
-    for (const topic of topics) {
-        if (topicId === topic.id) {
-            return topic
-        }
-    }
-
-    return null
-}
+import { findTopicById } from '../../services/topicService'
 
 export const Post = ({ post, topics, likes }) => {
-    const topic = getTopicById(post.topicId, topics)
+    const topic = findTopicById(post.topicId, topics)
     const likeCount = getLikeCount(post.id, likes)
 
     return <ul className='post'>

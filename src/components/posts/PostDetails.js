@@ -13,10 +13,11 @@ export const PostDetails = ({ loggedInUser }) => {
     const [likeCount, setLikeCount] = useState(0)
     const [hasLikedPost, setHasLikedPost] = useState(false)
     const [isAuthor, setIsAuthor] = useState(false)
-    // get current post id from URL
+    // get current post id from URL path
     const { postId } = useParams()
 
 
+    //? refactor this function into likeService.js
     const setAndGetLikes = () => {
         // get all likes
         getLikes().then((likes) => {
@@ -25,8 +26,8 @@ export const PostDetails = ({ loggedInUser }) => {
             // set like count
             setLikeCount(getLikeCount(post.id, likes))
 
+            // check if the current user has liked the current post
             for (const like of likes) {
-                // check if the current user has liked the current post
                 if (like.userId === loggedInUser.id && like.postId === post.id) {
                     setHasLikedPost(true)
                 }
@@ -64,13 +65,13 @@ export const PostDetails = ({ loggedInUser }) => {
             setIsAuthor(true)
         }
 
-    }, [loggedInUser.id, post.topicId, post.userId, postId, user.id]) // setAndGetLikes dependency causes infinite loop
+    }, [loggedInUser.id, post.topicId, post.userId, postId, user.id]) //! setAndGetLikes dependency causes infinite loop
 
 
     const handleLikeClick = async () => {
         await addLike({ userId: loggedInUser.id, postId: post.id })
         setAndGetLikes()
-        //! navigate to the Favorites view
+        //TODO navigate to the Favorites view
     }
     const handleUnlikeClick = async () => {
         await deleteLike(like)
@@ -78,7 +79,7 @@ export const PostDetails = ({ loggedInUser }) => {
         setAndGetLikes()
     }
     const handleEditClick = async () => {
-        //! navigate to Edit Post view
+        //TODO navigate to Edit Post view
     }
 
     const renderLikeButton = () => {

@@ -56,7 +56,7 @@ export const PostsList = () => {
                     if (searchTopicId === '0') {
                         return true;
                     }
-                    return findTopicById(post.topicId, allTopics).id === parseInt(searchTopicId)
+                    return findTopicById(post.topicId, allTopics)?.id === parseInt(searchTopicId)
                 })
             )
         }
@@ -66,7 +66,7 @@ export const PostsList = () => {
     return <section id='post-list'>
 
         <PostSearchBar setSearchTerm={setSearchTerm} resetSearch={resetSearchTopic} />
-        <PostTopicBar setSearchTopic={setSearchTopicId} resetSearch={resetSearchTerm} topics={allTopics} />
+        <PostTopicBar setTopic={setSearchTopicId} resetSearch={resetSearchTerm} topics={allTopics} />
 
         {filteredPosts.map((post) => {
             return <Post

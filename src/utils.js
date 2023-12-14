@@ -12,3 +12,8 @@ export const fetchOptions = (method, body) => {
 
     return options
 }
+
+export const currentDate = () => {
+    const date = new Date()
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
+}

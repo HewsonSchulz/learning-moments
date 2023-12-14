@@ -1,13 +1,15 @@
-export const PostTopicBar = ({ setSearchTopic, topics, resetSearch }) => {
+export const PostTopicBar = ({ setTopic, topics, resetSearch }) => {
     return <select
         id='topic-bar'
         onChange={(event) => {
-            setSearchTopic(event.target.value)
-            resetSearch()
+            setTopic(event.target.value)
+            if (resetSearch) {
+                resetSearch()
+            }
         }}>
 
         <option value='0'>
-            Search By Topic
+            {resetSearch ? 'Search By Topic' : 'Select Topic'}
         </option>
 
         {topics.map((topic) =>

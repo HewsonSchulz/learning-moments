@@ -10,12 +10,14 @@
 }
 
 /* ! */
-.like-btn {
+.like-btn,
+.save-btn {
     background-color: var(--primary);
 }
 
 /* ! */
-.like-btn:hover {
+.like-btn:hover,
+.save-btn:hover {
     background-color: var(--secondary);
 }
 

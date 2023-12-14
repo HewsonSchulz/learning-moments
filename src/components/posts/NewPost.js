@@ -27,11 +27,10 @@ export const NewPost = ({ loggedInUser }) => {
                 timestamp: currentDate(),
                 userId: loggedInUser.id,
                 topicId: parseInt(topicId)
-            }).then(navigate('/'))
-        }
+            })
 
-        // TODO: navigate to My Posts view
-        //! does not load new post on first render
+            navigate('/created')
+        }
     }
 
 

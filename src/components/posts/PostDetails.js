@@ -61,7 +61,7 @@ export const PostDetails = ({ loggedInUser }) => {
         // get all likes
         setAndGetLikes()
 
-        if (loggedInUser.id === user.id) {
+        if (loggedInUser.id === user.id && user.id) {
             setIsAuthor(true)
         }
 
@@ -83,20 +83,25 @@ export const PostDetails = ({ loggedInUser }) => {
     }
 
     const renderLikeButton = () => {
-        // if current user is not the author, and current user exists
-        if (!isAuthor && user.id) {
-            // if user has liked the post
-            if (hasLikedPost) {
-                // return unlike button
-                return <button className='unlike-btn' onClick={handleUnlikeClick}>Unlike</button>
+        // if current user exists
+        if (user.id) {
+            // and current user is not the author
+            if (!isAuthor) {
+                // and user has liked the post
+                if (hasLikedPost) {
+                    // return unlike button
+                    return <button className='unlike-btn' onClick={handleUnlikeClick}>Unlike</button>
+                } else {
+                    // otherwise, return like button
+                    return <button className='like-btn' onClick={handleLikeClick}>Like</button>
+                }
             } else {
-                // otherwise, return like button
-                return <button className='like-btn' onClick={handleLikeClick}>Like</button>
+                // otherwise, if current user is the author, return edit button
+                return <button className='edit-btn' onClick={handleEditClick}>Edit</button>
             }
-        } else {
-            // if current user is the author, return edit button
-            return <button className='edit-btn' onClick={handleEditClick}>Edit</button>
         }
+
+        return ''
     }
 
 

@@ -29,8 +29,8 @@ export const ApplicationViews = () => {
             </Route>
 
             <Route path='new' >
-                <Route index element={<NewPost loggedInUser={currentUser} />} />
-                <Route path=':postId' element={<NewPost loggedInUser={currentUser} />} />
+                <Route index element={<NewPost loggedInUser={currentUser} key='new-post' />} />
+                <Route path=':postId' element={<NewPost loggedInUser={currentUser} key='edit-post' />} />
             </Route>
 
             <Route path='created' element={<MyPosts loggedInUser={currentUser} />} />

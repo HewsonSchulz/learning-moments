@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getPostById } from "../../services/postService"
 import { getUserById } from "../../services/userService"
 import { getTopicById } from "../../services/topicService"
@@ -15,6 +15,7 @@ export const PostDetails = ({ loggedInUser }) => {
     const [isAuthor, setIsAuthor] = useState(false)
     // get current post id from URL path
     const { postId } = useParams()
+    const navigate = useNavigate()
 
 
     //? refactor this function into likeService.js
@@ -79,7 +80,7 @@ export const PostDetails = ({ loggedInUser }) => {
         setAndGetLikes()
     }
     const handleEditClick = async () => {
-        //TODO navigate to Edit Post view
+        navigate(`/new/${post.id}`)
     }
 
     const renderLikeButton = () => {

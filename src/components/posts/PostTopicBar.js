@@ -1,6 +1,7 @@
-export const PostTopicBar = ({ setTopic, topics, resetSearch }) => {
+export const PostTopicBar = ({ setTopic, topics, resetSearch, topicId }) => {
     return <select
         id='topic-bar'
+        value={topicId}
         onChange={(event) => {
             setTopic(event.target.value)
             if (resetSearch) {
@@ -13,10 +14,14 @@ export const PostTopicBar = ({ setTopic, topics, resetSearch }) => {
         </option>
 
         {topics.map((topic) =>
-            <option key={topic.id} value={topic.id}>
+            <option
+                key={topic.id}
+                value={topic.id}
+            >
                 {topic.name}
             </option>
         )}
 
     </select>
 }
+//! when switching to New Post view from Edit Post view it retains its information

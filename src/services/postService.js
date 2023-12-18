@@ -12,8 +12,8 @@ export const getPostById = async (id) => {
 }
 
 // add new post to database
-export const addPost = async (body) => {
-    return await fetch('http://localhost:8088/posts', fetchOptions('POST', body))
+export const addPost = async (post) => {
+    return await fetch('http://localhost:8088/posts', fetchOptions('POST', post))
         .then((res) => res.json())
 }
 
@@ -31,5 +31,11 @@ export const findPostByUser = (userId, posts) => {
 // delete specific posts from database
 export const deletePost = async (post) => {
     return await fetch(`http://localhost:8088/posts/${post.id}`, fetchOptions('DELETE'))
+        .then((res) => res.json())
+}
+
+// update old post in database
+export const updatePost = async (post) => {
+    return await fetch(`http://localhost:8088/posts/${post.id}`, fetchOptions('PUT', post))
         .then((res) => res.json())
 }

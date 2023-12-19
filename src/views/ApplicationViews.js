@@ -6,6 +6,7 @@ import { PostDetails } from '../components/posts/PostDetails'
 import { NewPost } from '../components/posts/NewPost'
 import { MyPosts } from '../components/posts/MyPosts'
 import { LikedPosts } from '../components/posts/LikedPosts'
+import { Profile } from '../components/profiles/Profile'
 
 export const ApplicationViews = () => {
     const [currentUser, setCurrentUser] = useState({})
@@ -19,15 +20,13 @@ export const ApplicationViews = () => {
 
     return <Routes>
         <Route path='/' element={<>
-            <NavBar />
+            <NavBar loggedInUser={currentUser} />
             <Outlet />
         </>}>
 
             <Route index element={<PostsList />} />
 
-            <Route path='details'>
-                <Route path=':postId' element={<PostDetails loggedInUser={currentUser} />} />
-            </Route>
+            <Route path='details/:postId' element={<PostDetails loggedInUser={currentUser} />} />
 
             <Route path='new' >
                 <Route index element={<NewPost loggedInUser={currentUser} key='new-post' />} />
@@ -37,6 +36,8 @@ export const ApplicationViews = () => {
             <Route path='created' element={<MyPosts loggedInUser={currentUser} />} />
 
             <Route path='liked' element={<LikedPosts loggedInUser={currentUser} />} />
+
+            <Route path='profile/:userId' element={<Profile />} />
 
         </Route>
     </Routes>

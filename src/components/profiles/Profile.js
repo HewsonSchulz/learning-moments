@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getUserById } from '../../services/userService'
 import { getPosts } from '../../services/postService'
 
-export const Profile = () => {
+export const Profile = ({ loggedInUser }) => {
     const { userId } = useParams()
     const [user, setUser] = useState({})
     const [numberOfPosts, setNumberOfPosts] = useState(0)
+    const navigate = useNavigate()
 
     useEffect(() => {
         getUserById(userId).then((user) =>
@@ -25,6 +26,15 @@ export const Profile = () => {
     }, [userId])
 
 
+    const renderEditButton = () => {
+        if (user.id === loggedInUser.id) {
+            return <button className='edit-btn' onClick={() => { navigate(`/profile/edit/${loggedInUser.id}`) }}>Edit</button>
+        }
+
+        return ''
+    }
+
+
     return <ul className='profile'>
 
         <li className='profile__item' id='profile__name'>
@@ -39,6 +49,8 @@ export const Profile = () => {
             Created {numberOfPosts} post
             {numberOfPosts !== 1 ? 's' : ''}
         </li>
+
+        {renderEditButton()}
 
     </ul>
 }

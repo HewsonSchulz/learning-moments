@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { getPostById } from "../../services/postService"
 import { getUserById } from "../../services/userService"
 import { getTopicById } from "../../services/topicService"
@@ -83,7 +83,7 @@ export const PostDetails = ({ loggedInUser }) => {
         navigate(`/new/${post.id}`)
     }
 
-    const renderLikeButton = () => {
+    const renderButton = () => {
         // if current user exists
         if (user.id) {
             // and current user is not the author
@@ -109,13 +109,15 @@ export const PostDetails = ({ loggedInUser }) => {
     return <ul className='post'>
 
         <li>{post.title}</li>
-        <li>{user.name}</li>
+        <Link to={`/profile/${user.id}`}>
+            <li>{user.name}</li>
+        </Link>
         <li>{topic.name}</li>
         <li>{post.timestamp}</li>
         <li>{post.body}</li>
         <li>{likeCount}</li>
 
-        {renderLikeButton()}
+        {renderButton()}
 
     </ul>
 }

@@ -37,7 +37,7 @@ export const ApplicationViews = () => {
 
             <Route path='liked' element={<LikedPosts loggedInUser={currentUser} />} />
 
-            <Route path='profile/:userId' element={<Profile />} />
+            <Route path='profile/:userId' element={<Profile loggedInUser={currentUser} />} />
 
         </Route>
     </Routes>

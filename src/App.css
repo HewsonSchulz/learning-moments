@@ -2,58 +2,50 @@ body {
     padding-top: 50px;
 }
 
-/* ! */
+/*
 #post-list {
     margin-left: 20px;
 }
 
-/* ! */
 #post-list>* {
     margin-top: 20px;
     list-style: none;
 }
 
-/* ! */
 .like-btn,
 .save-btn {
     background-color: var(--primary);
     margin-left: 50px;
 }
 
-/* ! */
 .like-btn:hover,
 .save-btn:hover {
     background-color: var(--secondary);
 }
 
-/* ! */
 .unlike-btn {
     background-color: var(--third);
     margin-left: 50px;
 }
 
-/* ! */
 .unlike-btn:hover {
     background-color: var(--fourth);
 }
 
-/* ! */
 .edit-btn {
     background-color: var(--info);
 }
 
-/* ! */
 .edit-btn:hover {
     background-color: var(--info2);
 }
 
-/* ! */
 .delete-btn {
     background-color: var(--info);
     margin-left: 100px;
 }
 
-/* ! */
 .delete-btn:hover {
     background-color: var(--warning);
 }
+*/

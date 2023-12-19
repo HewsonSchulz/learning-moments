@@ -1,26 +1,39 @@
 /* Import the google web fonts you want to use */
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Quicksand&family=Roboto:wght@100&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=Quicksand&family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap');
+@font-face {
+  font-family: 'ZenDots';
+  src: url('./assets/ZenDots-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 /* FONTS
-font-family: "Nunito", sans-serif;
-font-family: "Quicksand", sans-serif;
-font-family: "Roboto", sans-serif; 
+font-family: 'Nunito', sans-serif;
+font-family: 'Quicksand', sans-serif;
+font-family: 'Roboto', sans-serif; 
+
+font-family: 'Lato'; 
+font-family: 'ZenDots'; 
 */
 
 /* COLOR PALETTE */
 /* Feel free to change these values and create your own color palette! https://coolors.co/ is a great resource */
 :root {
   --primary: #4cb44a;
-  --secondary: #3b8d39;
+  --primary-dark: #3b8d39;
+  --primary-light: #59d457;
+  --primary-darker: #398536;
+
   --info: #ffb400;
   --warning: #f6511d;
   --white: #ffffff;
   --offWhite: #f2f2f3;
   --dark: #3b3b3b;
+  --darker: #252525;
   --outline: #c3c0c0;
-  --appBackground: #dddade;
+  --appBackground: #252525;
 
-  --third: #2b7bd6;
   --fourth: #2262ac;
   --info2: #eaa400;
 }
@@ -31,7 +44,7 @@ button,
 input,
 select,
 textarea {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 body {
@@ -45,7 +58,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", serif;
+  font-family: 'Roboto', serif;
 }
 
 /* This prevents all the links in the app from having default underline */

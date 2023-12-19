@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { PostTopicBar } from './PostTopicBar'
 import { getTopics } from '../../services/topicService'
 import { addPost, getPostById, updatePost } from '../../services/postService'
-import { currentDate } from '../../utils'
+import { currentDate, updateStateObject } from '../../utils'
 import { useNavigate, useParams } from 'react-router-dom'
 
 export const NewPost = ({ loggedInUser }) => {
@@ -23,13 +23,6 @@ export const NewPost = ({ loggedInUser }) => {
             })
         }
     }, [])
-
-
-    const updatePostState = (state, value) => {
-        const editedPost = { ...post }
-        editedPost[state] = value
-        setPost(editedPost)
-    }
 
     const handleSaveClick = async () => {
         if (parseInt(post.topicId) && post.title && post.body) {
@@ -58,12 +51,12 @@ export const NewPost = ({ loggedInUser }) => {
 
             <div className='edit-options'>
                 <PostTopicBar
-                    setTopic={(value) => { updatePostState('topicId', value) }}
+                    setTopic={(value) => { updateStateObject(setPost, 'topicId', value) }}
                     topics={allTopics}
                     topicId={post.topicId}
                 />
                 <input
-                    onChange={(event) => { updatePostState('title', event.target.value) }}
+                    onChange={(event) => { updateStateObject(setPost, 'title', event.target.value) }}
                     placeholder='Title'
                     autoFocus
                     value={post.title}
@@ -71,7 +64,7 @@ export const NewPost = ({ loggedInUser }) => {
             </div>
 
             <input
-                onChange={(event) => { updatePostState('body', event.target.value) }}
+                onChange={(event) => { updateStateObject(setPost, 'body', event.target.value) }}
                 placeholder='Body'
                 value={post.body}
             />

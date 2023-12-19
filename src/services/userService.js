@@ -23,3 +23,9 @@ export const getUserById = async (id) => {
   return await fetch(`http://localhost:8088/users/${id}`)
     .then((res) => res.json())
 }
+
+// update old user in database
+export const updateUser = async (user) => {
+  return await fetch(`http://localhost:8088/users/${user.id}`, fetchOptions('PUT', user))
+    .then((res) => res.json())
+}

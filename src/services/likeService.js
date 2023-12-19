@@ -38,5 +38,5 @@ export const getLikeByCFK = (userId, postId, likes) => {
         }
     }
 
-    return {}
+    return null
 }

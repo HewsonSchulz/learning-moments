@@ -17,6 +17,7 @@ body {
 .like-btn,
 .save-btn {
     background-color: var(--primary);
+    margin-left: 50px;
 }
 
 /* ! */
@@ -28,6 +29,7 @@ body {
 /* ! */
 .unlike-btn {
     background-color: var(--third);
+    margin-left: 50px;
 }
 
 /* ! */

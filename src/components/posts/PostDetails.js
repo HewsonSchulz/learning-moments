@@ -72,7 +72,7 @@ export const PostDetails = ({ loggedInUser }) => {
     const handleLikeClick = async () => {
         await addLike({ userId: loggedInUser.id, postId: post.id })
         setAndGetLikes()
-        //TODO navigate to the Favorites view
+        navigate(`/liked`)
     }
     const handleUnlikeClick = async () => {
         await deleteLike(like)

@@ -1,0 +1,28 @@
+.post{
+    background-color: var(--primary-darker);
+    color: var(--offWhite);
+    width: 80%;
+    margin-left: 10%;
+    border-radius: 5px;
+    /* border: solid 1px var(--primary); */
+    box-shadow: 4px 4px 5px rgb(242,242,243, 0.1);
+}
+
+.post-ul{
+    list-style: none;
+    margin-top: 10px;
+    padding: 10px 20px;
+    line-height: 30px;
+}
+
+#post__title{
+    /* text-decoration-line: underline; */
+    /* text-decoration-thickness: 1px; */
+    font-family: 'Lato';
+    font-weight: 900;
+}
+
+#post__title:hover{
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+}

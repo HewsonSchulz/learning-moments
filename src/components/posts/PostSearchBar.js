@@ -1,5 +1,7 @@
+import './PostSearchBar.css'
+
 export const PostSearchBar = ({ setSearchTerm, resetSearch }) => {
-    return <div id='search-bar'>
+    return <div className='post-bar' id='search-bar'>
         <input
             type='text'
             placeholder='Search By Title'

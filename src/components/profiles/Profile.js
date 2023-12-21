@@ -2,55 +2,61 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getUserById } from '../../services/userService'
 import { getPosts } from '../../services/postService'
+import './Profile.css'
 
 export const Profile = ({ loggedInUser }) => {
-    const { userId } = useParams()
-    const [user, setUser] = useState({})
-    const [numberOfPosts, setNumberOfPosts] = useState(0)
-    const navigate = useNavigate()
+	const { userId } = useParams()
+	const [user, setUser] = useState({})
+	const [numberOfPosts, setNumberOfPosts] = useState(0)
+	const navigate = useNavigate()
 
-    useEffect(() => {
-        getUserById(userId).then((user) =>
-            setUser(user)
-        )
+	useEffect(() => {
+		getUserById(userId).then((user) => setUser(user))
 
-        getPosts().then((posts) => {
-            let count = 0
-            for (const post of posts) {
-                if (post.userId === parseInt(userId)) {
-                    count++
-                }
-            }
-            setNumberOfPosts(count)
-        })
-    }, [userId])
+		getPosts().then((posts) => {
+			let count = 0
+			for (const post of posts) {
+				if (post.userId === parseInt(userId)) {
+					count++
+				}
+			}
+			setNumberOfPosts(count)
+		})
+	}, [userId])
 
+	const renderEditButton = () => {
+		if (user.id === loggedInUser.id) {
+			return (
+				<div
+					id='profile-edit'
+					className='fa-solid fa-pen-to-square edit-btn'
+					onClick={() => {
+						navigate(`/profile/edit/${loggedInUser.id}`)
+					}}
+				/>
+			)
+		}
 
-    const renderEditButton = () => {
-        if (user.id === loggedInUser.id) {
-            return <button className='edit-btn' onClick={() => { navigate(`/profile/edit/${loggedInUser.id}`) }}>Edit</button>
-        }
+		return ''
+	}
 
-        return ''
-    }
+	return (
+		<>
+			{renderEditButton()}
+			<ul className='profile'>
+				<li className='profile__item bold' id='profile__name'>
+					{user.name}
+				</li>
 
+				<li className='profile__item' id='profile__cohort'>
+					Cohort #<span className='bold'>{user.cohort}</span>
+				</li>
 
-    return <ul className='profile'>
-
-        <li className='profile__item' id='profile__name'>
-            {user.name}
-        </li>
-
-        <li className='profile__item' id='profile__cohort'>
-            Cohort {user.cohort}
-        </li>
-
-        <li className='profile__item' id='profile__cohort'>
-            Created {numberOfPosts} post
-            {numberOfPosts !== 1 ? 's' : ''}
-        </li>
-
-        {renderEditButton()}
-
-    </ul>
+				<li className='profile__item' id='profile__posts'>
+					Created <span className='bold'>{numberOfPosts}</span> post
+					{numberOfPosts !== 1 ? 's' : ''}
+				</li>
+			</ul>
+		</>
+	)
 }

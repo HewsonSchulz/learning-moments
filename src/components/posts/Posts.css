@@ -1,25 +1,75 @@
-.post{
-    background-color: var(--primary-darker);
-    color: var(--offWhite);
-    width: 80%;
-    margin-left: 10%;
-    border-radius: 5px;
-    box-shadow: 4px 4px 5px rgb(242,242,243, 0.1);
+.post {
+	background-color: var(--primary-darker);
+	color: var(--offWhite);
+	width: 80%;
+	margin-left: 10%;
+	border-radius: 5px;
+	box-shadow: 4px 4px 5px rgb(242, 242, 243, 0.1);
 }
 
-.post-ul{
-    list-style: none;
-    margin-top: 25px;
-    padding: 10px 20px;
-    line-height: 30px;
+.post-ul {
+	list-style: none;
+	margin-top: 25px;
+	padding: 10px 20px;
+	line-height: 30px;
 }
 
-#post__title{
-    font-family: 'Lato';
-    font-weight: 900;
+#post__title,
+#post__title2 {
+	font-family: 'Lato';
+	font-weight: 900;
 }
 
-#post__title:hover{
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
+#post__title:hover,
+.post__author:hover {
+	text-decoration-line: underline;
+	text-decoration-thickness: 1px;
+}
+
+.like-container .liked-unlike-btn,
+.like-container:hover .liked-like-btn,
+.like-container .unliked-like-btn,
+.like-container:hover .unliked-unlike-btn {
+	display: none;
+}
+
+.like-container:hover .liked-unlike-btn,
+.like-container:hover .unliked-like-btn {
+	display: inline;
+}
+
+.liked-like-btn,
+.unliked-like-btn {
+	color: var(--info);
+}
+
+.like-container:hover {
+	cursor: pointer;
+}
+
+.like-count {
+	user-select: none;
+}
+
+.post__body {
+	background-color: var(--primary);
+	border-radius: 5px;
+	margin: 10px 0px;
+}
+
+.post__body li {
+	padding: 5px 10px;
+}
+
+.edit-btn:hover,
+.delete-btn:hover {
+	color: var(--warning);
+	cursor: pointer;
+}
+
+.small-post {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
 }

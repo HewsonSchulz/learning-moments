@@ -1,24 +1,24 @@
 .post-bar {
-    margin: 20px 50px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
+	margin: 20px 50px;
+	display: flex;
+	justify-content: left;
+	align-items: center;
 }
 
 #search-bar__input {
-    padding: 10px;
-    width: 266px;
-    font-size: 16px;
-    border: 1px solid var(--offWhite);
-    border-radius: 5px;
-    outline: none;
+	padding: 10px;
+	width: 266px;
+	font-size: 16px;
+	border: 1px solid var(--offWhite);
+	border-radius: 5px;
+	outline: none;
 }
-  
+
 #topic-bar {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid var(--offWhite);
-    border-radius: 5px;
-    outline: none;
-    margin-bottom: 20px;
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid var(--offWhite);
+	border-radius: 5px;
+	outline: none;
+	margin-bottom: 20px;
 }

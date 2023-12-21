@@ -163,8 +163,12 @@ export const PostsList = ({ author, likedPostsUser }) => {
 
 	return (
 		<section id='post-list'>
-			<PostSearchBar setSearchTerm={setSearchTerm} resetSearch={resetSearchTopic} />
-			<PostTopicBar setTopic={setSearchTopicId} resetSearch={resetSearchTerm} topics={allTopics} />
+			<div className='post-bar' id='search-bar'>
+				<PostSearchBar setSearchTerm={setSearchTerm} resetSearch={resetSearchTopic} />
+			</div>
+			<div className='post-bar'>
+				<PostTopicBar setTopic={setSearchTopicId} resetSearch={resetSearchTerm} topics={allTopics} />
+			</div>
 
 			{renderPosts()}
 		</section>

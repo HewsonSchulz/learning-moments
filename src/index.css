@@ -24,18 +24,19 @@ font-family: 'ZenDots';
 	--primary-light: #59d457;
 	--primary-darker: #398536;
 
-	--secondary: #1d5391;
+	--secondary: #448cde;
+	--secondary-dark: #2870c3;
 
 	--info: #ffb400;
 	--warning: #f61d1d;
+
 	--white: #ffffff;
 	--offWhite: #f2f2f3;
 	--dark: #3b3b3b;
 	--darker: #252525;
 	--outline: #c3c0c0;
-	--appBackground: #252525;
 
-	/* --info2: #eaa400; */
+	--appBackground: #252525;
 }
 
 /* GLOBAL STYLES */

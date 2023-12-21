@@ -39,17 +39,19 @@ export const Post = ({ post, topics, likes, author, likedPostsUser, resetState }
 		// otherwise, if there is a likedPostsUser
 		return (
 			<div className='post'>
-				<ul className='post-ul'>
+				<ul className='post-ul small-post'>
 					<li>
 						<Link to={`/details/${post.id}`}>
 							<span className='post__item' id='post__title'>
 								{post.title}
 							</span>
 						</Link>
-						<button className='unlike-btn' onClick={handleUnlikeClicked}>
-							Unlike
-						</button>
 					</li>
+					{/* <i className='fa-solid fa-trash-can delete-btn' onClick={handleUnlikeClicked} /> */}
+					<i className='like-container'>
+						<i className='fa-solid fa-star liked-like-btn' />
+						<i className='fa-regular fa-star liked-unlike-btn' onClick={handleUnlikeClicked} />
+					</i>
 				</ul>
 			</div>
 		)

@@ -1,0 +1,48 @@
+.edit-container {
+	margin: 20px;
+	background-color: var(--primary-dark);
+	padding: 20px;
+	border-radius: 8px;
+}
+
+.edit-selections {
+	margin-bottom: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	/* gap: 150px; */
+}
+
+.edit-selections input {
+	width: 275px;
+	padding: 10px;
+	font-size: 18px;
+	border: 1px solid var(--offWhite);
+	border-radius: 5px;
+	outline: none;
+	height: 25px;
+}
+
+.edit-body textarea {
+	width: calc(100% - 20px);
+	padding: 10px;
+	font-size: 18px;
+	border: 1px solid var(--offWhite);
+	border-radius: 5px;
+	outline: none;
+	resize: none;
+	height: 500px;
+}
+
+.save-btn {
+	padding: 10px 20px;
+	font-size: 25px;
+	background-color: var(--secondary-dark);
+	border: none;
+	border-radius: 10px;
+	margin-left: 20px;
+}
+
+.save-btn:hover {
+	background-color: var(--secondary);
+}

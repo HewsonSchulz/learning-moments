@@ -3,13 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import { getPostById } from '../../services/postService'
 import { getUserById } from '../../services/userService'
 import { getTopicById } from '../../services/topicService'
-import {
-	addLike,
-	deleteLike,
-	getLikeByCFK,
-	getLikeCount,
-	getLikes,
-} from '../../services/likeService'
+import { addLike, deleteLike, getLikeByCFK, getLikeCount, getLikes } from '../../services/likeService'
 import './Posts.css'
 
 export const PostDetails = ({ loggedInUser }) => {
@@ -35,10 +29,7 @@ export const PostDetails = ({ loggedInUser }) => {
 
 			// check if the current user has liked the current post
 			for (const like of likes) {
-				if (
-					like.userId === loggedInUser.id &&
-					like.postId === post.id
-				) {
+				if (like.userId === loggedInUser.id && like.postId === post.id) {
 					setHasLikedPost(true)
 				}
 			}
@@ -101,14 +92,9 @@ export const PostDetails = ({ loggedInUser }) => {
 						<li>
 							<i className='like-container'>
 								<i className='fa-solid fa-star liked-like-btn' />
-								<i
-									className='fa-regular fa-star liked-unlike-btn'
-									onClick={handleUnlikeClick}
-								/>
+								<i className='fa-regular fa-star liked-unlike-btn' onClick={handleUnlikeClick} />
 							</i>
-							<span className='like-count'>
-								&ensp;{likeCount}
-							</span>
+							<span className='like-count'>&ensp;{likeCount}</span>
 						</li>
 					)
 				} else {
@@ -117,32 +103,22 @@ export const PostDetails = ({ loggedInUser }) => {
 						<li>
 							<i className='like-container'>
 								<i className='fa-regular fa-star unliked-unlike-btn' />
-								<i
-									className='fa-solid fa-star unliked-like-btn'
-									onClick={handleLikeClick}
-								/>
+								<i className='fa-solid fa-star unliked-like-btn' onClick={handleLikeClick} />
 							</i>
-							<span className='like-count'>
-								&ensp;{likeCount}
-							</span>
+							<span className='like-count'>&ensp;{likeCount}</span>
 						</li>
 					)
 				}
 			} else {
 				// otherwise, if current user is the author, return edit button
 				return (
-					<>
-						<li>
+					<li className='detail-footer'>
+						<div>
 							<i className='fa-solid fa-star liked-like-btn' />
-							<span className='like-count'>
-								&ensp;{likeCount}
-							</span>
-						</li>
-						<i
-							className='fa-solid fa-pen-to-square edit-btn'
-							onClick={handleEditClick}
-						/>
-					</>
+							<span className='like-count'>&ensp;{likeCount}</span>
+						</div>
+						<i className='fa-solid fa-pen-to-square edit-btn' onClick={handleEditClick} />
+					</li>
 				)
 			}
 		}
